@@ -1,6 +1,7 @@
 using System;
 using SceneManagement;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Roro.Scripts.SettingImplementations
 {
@@ -39,38 +40,25 @@ namespace Roro.Scripts.SettingImplementations
             return generalSettings;
         }
         
-        public float SceneTransitionDuration = 2f;
+        public bool IsInDebugMode = false;
         
-        public float IntroWaitDuration = 2f;
+        public float LoadingDuration = 2f;
+        
+        public float IntroSceneWaitDuration = 2f;
         
         public float LoadingFadeInDuration = 0.8f;
-        public float LoadingFadeOutDuration = 0.8f;
+
+        public float ElevatorDuration = 1;
+        
+        
 
         #region InGame
 
-        public float PlatformSpeed = 1f;
-        
-        public float GravityChangeSpeed = 1f;
-
-        public float GravityMagnitude = 2f;
+        public float PlayerSpeed = 1f;
 
         #endregion
 
 
 
-    }
-
-    [Serializable]
-    public class ScreenShakeValues
-    {
-        public float Duration = 0;
-        public float Magnitude = 1;
-    }
-
-    [Serializable]
-    public struct SceneToScene
-    {
-        public SceneId From;
-        public SceneId To;
     }
 }

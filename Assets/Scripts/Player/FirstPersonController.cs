@@ -1,4 +1,5 @@
 ﻿using InputManagement;
+using Roro.Scripts.GameManagement;
 using UnityCommon.Runtime.Extensions;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -50,6 +51,7 @@ namespace _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts
 		private float _fallTimeoutDelta;
 		
 		private CharacterController _controller;
+		[SerializeField]
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
@@ -60,16 +62,18 @@ namespace _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts
 
 		private void Awake()
 		{
-            PlayerPosition = transform.position;
+            GameManager.Instance.SetPlayer(this);
+		}
+
+		private void Start()
+		{
+			PlayerPosition = transform.position;
 			// TODO!!
 			if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
-
-		private void Start()
-		{
+			
 			_controller = GetComponent<CharacterController>();
 			inputManager = InputManager.Instance;
 		}
