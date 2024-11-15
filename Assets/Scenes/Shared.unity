@@ -503,7 +503,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  CursorLocked: 1
+  CursorLocked: 0
   CursorInputForLook: 1
 --- !u!114 &695017408
 MonoBehaviour:
@@ -711,7 +711,7 @@ PrefabInstance:
     - target: {fileID: 112274841314083668, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 112274841314083668, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
@@ -756,7 +756,7 @@ PrefabInstance:
     - target: {fileID: 2770456296927869892, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9710001
+      value: 0.9710002
       objectReference: {fileID: 0}
     - target: {fileID: 4604816564715689211, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
@@ -766,7 +766,7 @@ PrefabInstance:
     - target: {fileID: 7149781714804152483, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9710001
+      value: 0.9710002
       objectReference: {fileID: 0}
     - target: {fileID: 8074845807508594148, guid: f6bf3aff7d594794b8426ba75651dbaf,
         type: 3}
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9352d1ffcbaed469b118de2f40f36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRaycastDistance: 5
+  maxRaycastDistance: 2
   objectText: {fileID: 612350856}
 --- !u!4 &1971921785 stripped
 Transform:

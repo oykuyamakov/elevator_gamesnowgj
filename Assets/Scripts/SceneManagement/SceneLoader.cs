@@ -42,6 +42,8 @@ namespace SceneManagement
             SceneId.Oyku_Gossip
         };
         
+        public bool IsElevatorScene(SceneId id) => elevatorScenes.Contains(id);
+        
         private void Awake()
         {
             if(!SetupInstance())
@@ -88,7 +90,7 @@ namespace SceneManagement
             
             var sceneToLoad = sceneId.GetScene();
             
-            if (sceneToLoad.IsValid())
+            if (sceneToLoad.isLoaded)
             {
                 //Debug.Log($"The scene is already loaded {sceneId.ToString()}");
 
@@ -133,6 +135,7 @@ namespace SceneManagement
                 //The scene will be activated after the loading time passes so we break now
                 yield return new WaitUntil(() => loading == false);
             }
+            Debug.Log(sceneId.ToString() + waitForLoading ); 
 
             if (sceneId != SceneId.Loading)
             {
@@ -150,17 +153,21 @@ namespace SceneManagement
                 
             }
             
-            Debug.Log(sceneId.ToString() + " is being activated");
             SceneManager.SetActiveScene(sceneId.GetScene());
             if(sceneControllers.Exists(x => x.SceneId == sceneId))
                 sceneControllers.Find(x => x.SceneId == sceneId).OnActiveScene();
             
+            
+            Debug.Log(currentActiveScene + " on the view");
+
             SendSceneChangedEvent(sceneId);
 
             
             if (waitForLoading)
             {
                 currentActiveScene = sceneId;
+                Debug.Log(currentActiveScene + " is being active");
+
                 //Debug.Log("Active Scene is now: " + currentActiveScene.ToString());
             }
         }

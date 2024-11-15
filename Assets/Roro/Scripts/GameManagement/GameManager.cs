@@ -67,11 +67,8 @@ namespace Roro.Scripts.GameManagement
         
         private void OnSceneLoaded(SceneChangedEvent evt)
         {
-            Debug.Log(evt.SceneId);
-
             if (!notDiscoveredScenes.Contains(evt.SceneId) && evt.SceneId != SceneId.Tutorial) 
                 return;
-            
             
             if(player == null)
                 player = FindObjectOfType<FirstPersonController>();

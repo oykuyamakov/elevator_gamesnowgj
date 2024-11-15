@@ -27,7 +27,8 @@ namespace SceneManagement
         {
             if (m_ElevatorButtonPressed)
                 return;
-            Debug.Log("elevator used");
+            Debug.Log("elevator used", this);
+            
             m_ElevatorButtonPressed = true;
             m_Elevator.MoveElevator();
             

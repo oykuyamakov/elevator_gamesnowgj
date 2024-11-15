@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts;
+using DG.Tweening;
 using Events;
 using Roro.Scripts.GameManagement;
 using SceneManagement.EventImplementations;
@@ -12,11 +14,21 @@ namespace SceneManagement
 {
     public class Elevator : MonoBehaviour
     {
+        [SerializeField]
+        private Transform m_ElevatorDoor;
+        
         private SceneId currentScene;
         
         private bool elevatorButtonPressed;
         public bool ElevatorUsed => elevatorButtonPressed;
 
+        private bool isElevatorCalled;
+
+        private Vector3 m_InitialDoorPosition;
+        
+        private FirstPersonController player;
+        public bool IsPlayerIn => player != null;
+        
         private void Awake()
         {
             if (!elevatorButtonPressed)
@@ -24,32 +36,69 @@ namespace SceneManagement
                 GEM.AddListener<SceneChangedEvent>(OnNewSceneLoaded);
                 DontDestroyOnLoad(this);
             }
+            
+            m_InitialDoorPosition = m_ElevatorDoor.transform.position;
+
         }
         
         public void MoveElevator()
         {
+            if(player == null)
+                return;
+            
             if (elevatorButtonPressed)
                 return;
             
             elevatorButtonPressed = true;
             
-            //Close Doors
+            m_ElevatorDoor.DOMove(m_InitialDoorPosition, 0.5f).OnComplete(() =>
+            {
+                player.transform.position = Vector3.up;
+                transform.position = Vector3.zero;
+                transform.rotation = Quaternion.identity;
+                
+                var newScene = GameManager.Instance.GetNewRandomScene();
+                SceneLoader.Instance.ChangeScene(newScene);
+            });
+        }
+        
+        public void OnElevatorCalled()
+        {
+            if(isElevatorCalled)
+                return;
             
-            // Elevator button pressed
-            Debug.Log("Elevator button pressed");
-            var newScene = GameManager.Instance.GetNewRandomScene();
-            SceneLoader.Instance.ChangeScene(newScene);
-            //Open Doors After
+            m_ElevatorDoor.DOMove(m_InitialDoorPosition + Vector3.up * 10, 0.5f);
+            isElevatorCalled = true;
         }
         
         private void OnNewSceneLoaded(SceneChangedEvent evt)
         {
-            if (elevatorButtonPressed)
+            if (elevatorButtonPressed && SceneLoader.Instance.IsElevatorScene(evt.SceneId))
             {
                 GEM.RemoveListener<SceneChangedEvent>(OnNewSceneLoaded);
-                SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetActiveScene());
+                SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName(evt.SceneId.GetName()));
+                Debug.Log(evt.SceneId.GetName() + "movelasana aminakodugumun");
+                
+                m_ElevatorDoor.DOMove(m_ElevatorDoor.transform.position + Vector3.up * 10, 0.5f);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<FirstPersonController>(out var pl))
+            {
+                player = pl;
+                Debug.Log("pl in");
             }
         }
         
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent<FirstPersonController>(out var pl))
+            {
+                player = null;
+                Debug.Log("pl out");
+            }
+        }
     }
 }
