@@ -16,5 +16,5 @@ MonoBehaviour:
   LoadingDuration: 2
   IntroSceneWaitDuration: 2
   LoadingFadeInDuration: 0.8
-  ElevatorDuration: 30
+  ElevatorDuration: 5
   PlayerSpeed: 1

@@ -100,3 +100,8 @@ crashlytics-build.properties
 Screenshots/
 Assets/Polygon Arsenal/PolygonArsenal LWRP Upgrade.unitypackage.meta
 PlayServicesResolver.meta
+Assets/Models/DancingMan.meta
+Assets/Models/DancingMan/Dancing.fbx
+Assets/Models/DancingMan/Dancing.fbx.meta
+Assets/Models/DancingMan/DancingMan.controller
+Assets/Models/DancingMan/DancingMan.controller.meta

@@ -17,6 +17,9 @@ namespace SceneManagement
         [SerializeField]
         private Transform m_ElevatorDoor;
         
+        [SerializeField]
+        private CallElevatorButton m_CallElevatorButton;
+        
         private SceneId currentScene;
         
         private bool elevatorButtonPressed;
@@ -59,6 +62,8 @@ namespace SceneManagement
                 
                 var newScene = GameManager.Instance.GetNewRandomScene();
                 SceneLoader.Instance.ChangeScene(newScene);
+                
+                m_CallElevatorButton.gameObject.SetActive(false);
             });
         }
         
@@ -77,7 +82,6 @@ namespace SceneManagement
             {
                 GEM.RemoveListener<SceneChangedEvent>(OnNewSceneLoaded);
                 SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName(evt.SceneId.GetName()));
-                Debug.Log(evt.SceneId.GetName() + "movelasana aminakodugumun");
                 
                 m_ElevatorDoor.DOMove(m_ElevatorDoor.transform.position + Vector3.up * 10, 0.5f);
             }
@@ -88,7 +92,6 @@ namespace SceneManagement
             if (other.TryGetComponent<FirstPersonController>(out var pl))
             {
                 player = pl;
-                Debug.Log("pl in");
             }
         }
         
@@ -97,7 +100,6 @@ namespace SceneManagement
             if (other.TryGetComponent<FirstPersonController>(out var pl))
             {
                 player = null;
-                Debug.Log("pl out");
             }
         }
     }

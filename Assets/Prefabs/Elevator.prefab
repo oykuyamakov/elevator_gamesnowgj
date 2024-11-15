@@ -134,8 +134,8 @@ Transform:
   m_GameObject: {fileID: 2495584648593753842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.573, y: 12.1, z: -0.2753623}
-  m_LocalScale: {x: 0.045377906, y: 5, z: 0.10351966}
+  m_LocalPosition: {x: -0.573, y: 13.976, z: -0.311}
+  m_LocalScale: {x: 0.045377906, y: 8.755, z: 0.10351966}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 990997212208410577}
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ElevatorDoor: {fileID: 3134116823060037791}
+  m_CallElevatorButton: {fileID: 8714659128748865874}
 --- !u!1 &5688912255577121496
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,8 +877,8 @@ Transform:
   m_GameObject: {fileID: 8156595459317156156}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.148, y: 12.1, z: -0.336}
-  m_LocalScale: {x: 0.14534883, y: 5, z: 0.10351966}
+  m_LocalPosition: {x: 0.148, y: 10.819, z: -0.426}
+  m_LocalScale: {x: 0.14534883, y: 14.73186, z: 0.10351966}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 990997212208410577}

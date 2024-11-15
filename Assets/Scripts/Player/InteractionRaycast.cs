@@ -66,11 +66,15 @@ namespace Player
             // Check if we hit anything
             if (Physics.Raycast(ray, out hit, maxRaycastDistance, LayerMask.GetMask("Interactable")))
             {
+                Debug.Log("1");
+
                 var interactableObject = hit.collider.gameObject.GetComponent<Interactable>();
                 
                 // We hit something that is interactable
                 if (interactableObject != null)
                 {
+                    Debug.Log("2");
+
                     // If the object we are looking at is not the same as the current object
                     if (interactableObject != currentInteractable)
                     {
@@ -80,6 +84,8 @@ namespace Player
                     }
                 } else 
                 {
+                    Debug.Log("3");
+
                     // We are not looking at an interactable object
                     // if(Input.mousePosition != mousePos)
                         LookAwayFromCurrentInteractable();
@@ -87,6 +93,8 @@ namespace Player
             }
             else
             {
+                
+                Debug.Log("4");
                 // We are not looking at anything
                 // if(Input.mousePosition != mousePos)
                     LookAwayFromCurrentInteractable();

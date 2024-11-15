@@ -29,12 +29,8 @@ namespace Roro.Scripts.GameManagement
         public BoolVariable GameIsRunning => m_GameIsRunning;
         
         private FirstPersonController player;
-    
-        private List<SceneId> notDiscoveredScenes = new List<SceneId>()
-        {
-            SceneId.Oyku_Rave,
-            SceneId.Oyku_Gossip,
-        };
+
+        private List<SceneId> notDiscoveredScenes;
 
         [Button]
         public void ToggleGame()
@@ -53,6 +49,8 @@ namespace Roro.Scripts.GameManagement
                 return;
 
             Variable.Initialize();
+
+            notDiscoveredScenes = SceneLoader.Instance.ElevatorScenes;
             
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 

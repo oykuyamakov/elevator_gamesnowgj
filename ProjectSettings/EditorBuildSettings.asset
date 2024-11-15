@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Oyku_Gossip.unity
     guid: 5c137dbca1e39fd40b555eba50dc3a32
   - enabled: 1
+    path: Assets/Scenes/Sauna.unity
+    guid: d8cfe0c09696c414a9fb5b93e1461ba2
+  - enabled: 1
     path: Assets/Scenes/Oyku_Rave.unity
     guid: e3ea489111d4eab408e71bfdb328bd36
   - enabled: 1

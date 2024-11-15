@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using Roro.Scripts.SettingImplementations;
 using SceneManagement.EventImplementations;
@@ -34,20 +35,26 @@ namespace SceneManagement
             {SceneId.Tutorial, true},
             {SceneId.Oyku_Rave, true},
             {SceneId.Oyku_Gossip, true},
+            {SceneId.Sauna, true},
         };
 
         private HashSet<SceneId> elevatorScenes = new HashSet<SceneId>()
         {
             SceneId.Oyku_Rave,
-            SceneId.Oyku_Gossip
+            SceneId.Oyku_Gossip,
+            SceneId.Sauna,
         };
         
         public bool IsElevatorScene(SceneId id) => elevatorScenes.Contains(id);
+
+        public List<SceneId> ElevatorScenes { get; private set; }
         
         private void Awake()
         {
             if(!SetupInstance())
                 return;
+
+            ElevatorScenes = elevatorScenes.ToList();
             
             currentActiveScene = SceneId.Intro;
             LoadGame();
@@ -135,7 +142,6 @@ namespace SceneManagement
                 //The scene will be activated after the loading time passes so we break now
                 yield return new WaitUntil(() => loading == false);
             }
-            Debug.Log(sceneId.ToString() + waitForLoading ); 
 
             if (sceneId != SceneId.Loading)
             {
@@ -158,7 +164,6 @@ namespace SceneManagement
                 sceneControllers.Find(x => x.SceneId == sceneId).OnActiveScene();
             
             
-            Debug.Log(currentActiveScene + " on the view");
 
             SendSceneChangedEvent(sceneId);
 
@@ -166,9 +171,8 @@ namespace SceneManagement
             if (waitForLoading)
             {
                 currentActiveScene = sceneId;
-                Debug.Log(currentActiveScene + " is being active");
 
-                //Debug.Log("Active Scene is now: " + currentActiveScene.ToString());
+                Debug.Log("Active Scene is now: " + currentActiveScene.ToString());
             }
         }
         
@@ -217,6 +221,7 @@ namespace SceneManagement
         Tutorial = 32,
         Oyku_Rave = 64,
         Oyku_Gossip = 128,
+        Sauna = 256,
     }
     
     public static class SceneExtensions
