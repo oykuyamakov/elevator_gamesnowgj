@@ -28,10 +28,13 @@ namespace SceneManagement
             if (m_ElevatorButtonPressed)
                 return;
             
+            if(!m_Elevator.IsPlayerIn)
+                return;
+            
             m_ElevatorButtonPressed = true;
             m_Elevator.MoveElevator();
             
-            m_DisplayInfo = "elevator used";
+            m_DisplayInfo = "";
             OnLookAway();
         }
     }

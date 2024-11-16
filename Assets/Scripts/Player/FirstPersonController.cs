@@ -54,6 +54,8 @@ namespace _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts
 		[SerializeField]
 		private GameObject _mainCamera;
 
+		public GameObject plCamera;
+
 		private const float _threshold = 0.01f;
 
 		private InputManager inputManager;
@@ -73,6 +75,8 @@ namespace _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			plCamera = _mainCamera;
 			
 			_controller = GetComponent<CharacterController>();
 			inputManager = InputManager.Instance;

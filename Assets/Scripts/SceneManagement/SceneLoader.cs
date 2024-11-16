@@ -36,6 +36,8 @@ namespace SceneManagement
             {SceneId.Oyku_Rave, true},
             {SceneId.Oyku_Gossip, true},
             {SceneId.Sauna, true},
+            {SceneId.Swamp, true},
+            {SceneId.BDSM_Room, true},
         };
 
         private HashSet<SceneId> elevatorScenes = new HashSet<SceneId>()
@@ -43,6 +45,7 @@ namespace SceneManagement
             SceneId.Oyku_Rave,
             SceneId.Oyku_Gossip,
             SceneId.Sauna,
+            SceneId.BDSM_Room,
         };
         
         public bool IsElevatorScene(SceneId id) => elevatorScenes.Contains(id);
@@ -222,6 +225,8 @@ namespace SceneManagement
         Oyku_Rave = 64,
         Oyku_Gossip = 128,
         Sauna = 256,
+        Swamp = 512,
+        BDSM_Room = 1024,
     }
     
     public static class SceneExtensions

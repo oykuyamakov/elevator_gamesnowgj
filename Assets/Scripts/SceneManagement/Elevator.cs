@@ -1,21 +1,23 @@
-using System;
-using System.Collections.Generic;
+
+using System.Collections;
 using _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts;
+using Cinemachine;
 using DG.Tweening;
 using Events;
 using Roro.Scripts.GameManagement;
 using SceneManagement.EventImplementations;
-using Unity.VisualScripting;
+using UnityCommon.Modules;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
 namespace SceneManagement
 {
     public class Elevator : MonoBehaviour
     {
         [SerializeField]
-        private Transform m_ElevatorDoor;
+        private Animator m_ElevatorDoorAnimator;
         
         [SerializeField]
         private CallElevatorButton m_CallElevatorButton;
@@ -26,8 +28,6 @@ namespace SceneManagement
         public bool ElevatorUsed => elevatorButtonPressed;
 
         private bool isElevatorCalled;
-
-        private Vector3 m_InitialDoorPosition;
         
         private FirstPersonController player;
         public bool IsPlayerIn => player != null;
@@ -39,9 +39,6 @@ namespace SceneManagement
                 GEM.AddListener<SceneChangedEvent>(OnNewSceneLoaded);
                 DontDestroyOnLoad(this);
             }
-            
-            m_InitialDoorPosition = m_ElevatorDoor.transform.position;
-
         }
         
         public void MoveElevator()
@@ -54,17 +51,42 @@ namespace SceneManagement
             
             elevatorButtonPressed = true;
             
-            m_ElevatorDoor.DOMove(m_InitialDoorPosition, 0.5f).OnComplete(() =>
+            m_ElevatorDoorAnimator.SetBool("Open", false);
+
+            StartCoroutine(Aminakoyayim());
+        }
+
+        private IEnumerator Aminakoyayim()
+        {
+            yield return new WaitForSeconds(0.5f);
+            
+            var volume = GameManager.Instance.GetPlayer().plCamera.GetComponent<Volume>();
+            
+            if(volume.profile.TryGet(out Vignette vin))
             {
-                player.transform.position = Vector3.up;
-                transform.position = Vector3.zero;
-                transform.rotation = Quaternion.identity;
+                DOTween.To(() => vin.intensity.value, x => vin.intensity.value = x, 0.5f, 1f);
+            }
+            //
+            // Debug.Log(vin.intensity.value);
+            //
+            yield return new WaitForSeconds(2f);
+            
+            var newScene = GameManager.Instance.GetNewRandomScene();
+            SceneLoader.Instance.ChangeScene(newScene);
+            
+            GameManager.Instance.GetPlayer().enabled = false;
+            GameManager.Instance.GetPlayer().transform.position = new Vector3(1.5f,1.5f,0f);
+            GameManager.Instance.GetPlayer().enabled = true;
+            
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+            transform.DORotate(Vector3.zero, 1f);
+            
+            yield return new WaitForSeconds(1f);
+            
+            DOTween.To(() => vin.intensity.value, x => vin.intensity.value = x, 0f, 1f).SetEase(Ease.InOutSine);
                 
-                var newScene = GameManager.Instance.GetNewRandomScene();
-                SceneLoader.Instance.ChangeScene(newScene);
-                
-                m_CallElevatorButton.gameObject.SetActive(false);
-            });
+            m_CallElevatorButton.gameObject.SetActive(false);
         }
         
         public void OnElevatorCalled()
@@ -72,7 +94,8 @@ namespace SceneManagement
             if(isElevatorCalled)
                 return;
             
-            m_ElevatorDoor.DOMove(m_InitialDoorPosition + Vector3.up * 10, 0.5f);
+            m_ElevatorDoorAnimator.SetBool("Open", true);
+            
             isElevatorCalled = true;
         }
         
@@ -83,7 +106,7 @@ namespace SceneManagement
                 GEM.RemoveListener<SceneChangedEvent>(OnNewSceneLoaded);
                 SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName(evt.SceneId.GetName()));
                 
-                m_ElevatorDoor.DOMove(m_ElevatorDoor.transform.position + Vector3.up * 10, 0.5f);
+                m_ElevatorDoorAnimator.SetBool("Open", true);
             }
         }
 

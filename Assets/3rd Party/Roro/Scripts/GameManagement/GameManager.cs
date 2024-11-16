@@ -86,6 +86,10 @@ namespace Roro.Scripts.GameManagement
             this.player = player;
             player.gameObject.SetActive(false);
         }
+        public FirstPersonController GetPlayer()
+        {
+            return player;
+        }
 
         public void ResetNotDiscoveredScenes()
         {
