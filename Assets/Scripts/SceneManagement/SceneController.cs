@@ -26,8 +26,8 @@ namespace SceneManagement
             //TODO add debug
             settings = GeneralSettings.Get();
             
-            if(settings.IsInDebugMode)
-                return;
+            // if(settings.IsInDebugMode)
+            //     return;
             
             sceneManager = SceneLoader.Instance;
             if (!sceneManager.SceneControllers.Contains(this))

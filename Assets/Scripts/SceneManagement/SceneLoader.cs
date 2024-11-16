@@ -40,13 +40,15 @@ namespace SceneManagement
             {SceneId.BDSM_Room, true},
         };
 
-        private HashSet<SceneId> elevatorScenes = new HashSet<SceneId>()
+        [SerializeField] private List<SceneId> ScenesForElevator = new List<SceneId>()
         {
             SceneId.Oyku_Rave,
             SceneId.Oyku_Gossip,
             SceneId.Sauna,
             SceneId.BDSM_Room,
         };
+
+        private HashSet<SceneId> elevatorScenes => ScenesForElevator.ToHashSet();
         
         public bool IsElevatorScene(SceneId id) => elevatorScenes.Contains(id);
 
@@ -67,7 +69,6 @@ namespace SceneManagement
         {
             StartCoroutine(LoadScene(SceneId.Shared, false));
             StartCoroutine(LoadScene(SceneId.Loading, false));
-            //StartCoroutine(LoadScene(SceneId.MainMenu, true));
         }
         
         [Button]

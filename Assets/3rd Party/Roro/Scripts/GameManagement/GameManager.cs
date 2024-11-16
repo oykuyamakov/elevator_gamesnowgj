@@ -4,6 +4,7 @@ using _3rd_Party.Systems.StarterAssets.FirstPersonController.Scripts;
 using Events;
 using InputManagement;
 using Roro.Scripts.Serialization;
+using Roro.Scripts.SettingImplementations;
 using Roro.Scripts.Sounds.Core;
 using Roro.Scripts.Utility;
 using SceneManagement;
@@ -78,12 +79,21 @@ namespace Roro.Scripts.GameManagement
             
             player.gameObject.SetActive(true);
 
-
         }
         
         public void SetPlayer(FirstPersonController player)
         {
+            if (this.player != null)
+            {
+                Destroy(this.player.gameObject);
+                return;
+            }
+            
             this.player = player;
+            
+            if(GeneralSettings.Get().IsInDebugMode)
+                return;
+            
             player.gameObject.SetActive(false);
         }
         public FirstPersonController GetPlayer()
