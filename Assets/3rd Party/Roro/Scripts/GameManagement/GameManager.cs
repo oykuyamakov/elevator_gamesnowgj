@@ -73,6 +73,7 @@ namespace Roro.Scripts.GameManagement
                 player = FindObjectOfType<FirstPersonController>();
             
             InputManager.Instance.CursorLocked = true;
+            Cursor.lockState = CursorLockMode.Locked;
             
             // if(player.gameObject.activeSelf) 
             //     return;         
@@ -113,13 +114,15 @@ namespace Roro.Scripts.GameManagement
                 return SceneId.Ending;
             }
 
-            if (SceneLoader.Instance.CurrentScene == SceneId.Intro)
+            if (SceneLoader.Instance.CurrentScene == SceneId.Tutorial)
             {
+                notDiscoveredScenes.Remove(SceneId.Introduction);
                 return SceneId.Introduction;
             }
             
             if (SceneLoader.Instance.CurrentScene == SceneId.Introduction)
             {
+                notDiscoveredScenes.Remove(SceneId.Sauna);
                 return SceneId.Sauna;
             }
             

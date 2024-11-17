@@ -53,6 +53,8 @@ namespace SceneManagement
             SceneId.Oyku_Rave,
             SceneId.Car,
             SceneId.Networking,
+            SceneId.Introduction,
+            SceneId.Sauna,
         };
 
         private HashSet<SceneId> elevatorScenes => ScenesForElevator.ToHashSet();

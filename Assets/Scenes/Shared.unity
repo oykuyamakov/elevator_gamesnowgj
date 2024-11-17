@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1891542011}
   - component: {fileID: 1891542013}
-  - component: {fileID: 1891542012}
+  - component: {fileID: 1891542014}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -312,31 +312,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1891542012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891542010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 003556eb07ded3346988d3cd8f14b0ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneMusics:
-  - sceneId: 8192
-    music: {fileID: 8300000, guid: c466b5030a89e4f418751f3f922b3fc0, type: 3}
-  - sceneId: 64
-    music: {fileID: 8300000, guid: 8af366944786e014f9fd0f6cd25f3ef6, type: 3}
-  - sceneId: 2048
-    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 1024
-    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 4096
-    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 512
-    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
 --- !u!82 &1891542013
 AudioSource:
   m_ObjectHideFlags: 0
@@ -351,14 +326,14 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 5
+  MaxDistance: 3
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -433,6 +408,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1891542014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891542010}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003556eb07ded3346988d3cd8f14b0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneMusics:
+  - sceneId: 8192
+    music: {fileID: 8300000, guid: c466b5030a89e4f418751f3f922b3fc0, type: 3}
+  - sceneId: 64
+    music: {fileID: 8300000, guid: 8af366944786e014f9fd0f6cd25f3ef6, type: 3}
+  - sceneId: 2048
+    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
+  - sceneId: 1024
+    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
+  - sceneId: 4096
+    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
+  - sceneId: 512
+    music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
 --- !u!1001 &5633067687031662882
 PrefabInstance:
   m_ObjectHideFlags: 0

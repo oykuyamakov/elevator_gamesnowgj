@@ -117,7 +117,7 @@ namespace SceneManagement
         
         private void OnNewSceneLoaded(SceneChangedEvent evt)
         {
-            if (elevatorButtonPressed && SceneLoader.Instance.IsElevatorScene(evt.SceneId))
+            if (elevatorButtonPressed && (SceneLoader.Instance.IsElevatorScene(evt.SceneId) || SceneId.Ending == evt.SceneId))
             {
                 GEM.RemoveListener<SceneChangedEvent>(OnNewSceneLoaded);
                 SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetSceneByName(evt.SceneId.GetName()));
