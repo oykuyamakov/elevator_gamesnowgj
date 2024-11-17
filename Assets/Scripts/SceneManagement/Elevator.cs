@@ -63,6 +63,8 @@ namespace SceneManagement
             using var evt = ElevatorInEvent.Get(newScene);
             evt.SendGlobal();
             
+            GameManager.Instance.GetPlayer().GetComponent<Rigidbody>().isKinematic = true;
+            
             yield return new WaitForSeconds(0.5f);
             
             var volume = GameManager.Instance.GetPlayer().plCamera.GetComponent<Volume>();
@@ -78,15 +80,25 @@ namespace SceneManagement
             
             SceneLoader.Instance.ChangeScene(newScene);
             
+            GameManager.Instance.GetPlayer().transform.position = new Vector3(1.5f,1.5f,0f);
+            
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+            transform.DORotate( newScene == SceneId.Networking ? new Vector3(0,180,0) : Vector3.zero, 1f);
+            
+            yield return new WaitForSeconds(1f);
+            
             GameManager.Instance.GetPlayer().enabled = false;
             GameManager.Instance.GetPlayer().transform.position = new Vector3(1.5f,1.5f,0f);
             GameManager.Instance.GetPlayer().enabled = true;
             
             transform.position = Vector3.zero;
             transform.rotation = Quaternion.identity;
-            transform.DORotate(Vector3.zero, 1f);
+            transform.DORotate( newScene == SceneId.Networking ? new Vector3(0,180,0) : Vector3.zero, 1f);
+            Debug.Log("ananisikem");
             
-            yield return new WaitForSeconds(1f);
+            GameManager.Instance.GetPlayer().GetComponent<Rigidbody>().isKinematic = false;
+
             
             DOTween.To(() => vin.intensity.value, x => vin.intensity.value = x, 0f, 1f).SetEase(Ease.InOutSine);
                 

@@ -24,8 +24,14 @@ EditorBuildSettings:
     path: Assets/Scenes/CAR.unity
     guid: 0779c826cc6e1e049af03c9d47c7ce99
   - enabled: 1
+    path: Assets/Scenes/Networking.unity
+    guid: 9cd190e127be4014589bc78f9e2c28a9
+  - enabled: 1
     path: Assets/Scenes/BDSM_Room.unity
     guid: 20063907a5395984f9f82ec1a191c884
+  - enabled: 1
+    path: Assets/Scenes/Introduction.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/Oyku_Rave.unity
     guid: e3ea489111d4eab408e71bfdb328bd36

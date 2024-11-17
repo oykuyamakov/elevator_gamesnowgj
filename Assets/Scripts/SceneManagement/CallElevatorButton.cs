@@ -18,7 +18,7 @@ namespace SceneManagement
         public override void OnLookAt()
         {
             base.OnLookAt();
-            m_DisplayInfo = !m_Elevator.IsPlayerIn ? m_CallButtonPressed ? "" : "Call Elevatoto" : "";
+            m_DisplayInfo = !m_Elevator.IsPlayerIn ? m_CallButtonPressed ? "" : "Call ELEVATOR" : "";
         }
 
         public override void Interact()

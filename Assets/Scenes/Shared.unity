@@ -335,10 +335,8 @@ MonoBehaviour:
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
   - sceneId: 4096
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 0
+  - sceneId: 512
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 0
-    music: {fileID: 0}
 --- !u!82 &1891542013
 AudioSource:
   m_ObjectHideFlags: 0

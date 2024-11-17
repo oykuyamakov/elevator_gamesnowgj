@@ -112,6 +112,16 @@ namespace Roro.Scripts.GameManagement
             {
                 return SceneId.Ending;
             }
+
+            if (SceneLoader.Instance.CurrentScene == SceneId.Intro)
+            {
+                return SceneId.Introduction;
+            }
+            
+            if (SceneLoader.Instance.CurrentScene == SceneId.Introduction)
+            {
+                return SceneId.Sauna;
+            }
             
             var newScene = notDiscoveredScenes[Random.Range(0, notDiscoveredScenes.Count)];
             notDiscoveredScenes.Remove(newScene);
