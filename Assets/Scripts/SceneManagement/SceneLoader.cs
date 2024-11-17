@@ -21,6 +21,7 @@ namespace SceneManagement
         private List<SceneController> sceneControllers = new List<SceneController>();
         
         private SceneId currentActiveScene;
+        public SceneId CurrentScene => currentActiveScene;
         
         private GeneralSettings settings => GeneralSettings.Get();
 
@@ -40,6 +41,8 @@ namespace SceneManagement
             {SceneId.Oyku_Shinning, true},
             {SceneId.Car, true},
             {SceneId.Ending, true},
+            {SceneId.Introduction, true},
+            {SceneId.Networking, true},
         };
 
         private List<SceneId> ScenesForElevator = new List<SceneId>()
@@ -48,9 +51,8 @@ namespace SceneManagement
             SceneId.Swamp,
             SceneId.BDSM_Room,
             SceneId.Oyku_Rave,
-            SceneId.Sauna,
             SceneId.Car,
-            
+            SceneId.Networking,
         };
 
         private HashSet<SceneId> elevatorScenes => ScenesForElevator.ToHashSet();
@@ -235,6 +237,8 @@ namespace SceneManagement
         Oyku_Shinning = 2048,
         Ending = 4096,
         Car = 8192,
+        Networking = 16384,
+        Introduction = 32768,
     }
     
     public static class SceneExtensions

@@ -328,17 +328,15 @@ MonoBehaviour:
   - sceneId: 8192
     music: {fileID: 8300000, guid: c466b5030a89e4f418751f3f922b3fc0, type: 3}
   - sceneId: 64
-    music: {fileID: 8300000, guid: fafb196c4a9b6624b9d0242dd55b4114, type: 3}
+    music: {fileID: 8300000, guid: 8af366944786e014f9fd0f6cd25f3ef6, type: 3}
   - sceneId: 2048
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
   - sceneId: 1024
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
   - sceneId: 4096
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 0
+  - sceneId: 512
     music: {fileID: 8300000, guid: 7144c1dd160cca545b5cdca0590325b1, type: 3}
-  - sceneId: 0
-    music: {fileID: 0}
 --- !u!82 &1891542013
 AudioSource:
   m_ObjectHideFlags: 0

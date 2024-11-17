@@ -39,8 +39,8 @@ public class MusicPlayer : MonoBehaviour
         
         if(m_SceneMusicDictionary.ContainsKey(nextScene))
         {
-            if(m_SceneMusicDictionary[prevScene] != m_SceneMusicDictionary[nextScene])
-            {
+            // if(m_SceneMusicDictionary[prevScene] != m_SceneMusicDictionary[nextScene])
+            // {
                 m_AudioSource.DOKill();
                 
                 m_AudioSource.DOFade(0f, 0.1f).OnComplete(() =>
@@ -50,7 +50,10 @@ public class MusicPlayer : MonoBehaviour
                     m_AudioSource.Play();
                 });
                 
-            }
+            //}
+            
+            prevScene = nextScene;
+
         }
     }
     
