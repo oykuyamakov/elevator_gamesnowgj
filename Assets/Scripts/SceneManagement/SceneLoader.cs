@@ -38,14 +38,17 @@ namespace SceneManagement
             {SceneId.Sauna, true},
             {SceneId.Swamp, true},
             {SceneId.BDSM_Room, true},
+            {SceneId.Oyku_Shinning, true},
+            {SceneId.Ending, true},
         };
 
-        [SerializeField] private List<SceneId> ScenesForElevator = new List<SceneId>()
+        private List<SceneId> ScenesForElevator = new List<SceneId>()
         {
-            SceneId.Oyku_Rave,
-            SceneId.Oyku_Gossip,
-            SceneId.Sauna,
+            SceneId.Oyku_Shinning,
+            SceneId.Swamp,
             SceneId.BDSM_Room,
+            SceneId.Oyku_Rave,
+            SceneId.Sauna,
         };
 
         private HashSet<SceneId> elevatorScenes => ScenesForElevator.ToHashSet();
@@ -228,6 +231,8 @@ namespace SceneManagement
         Sauna = 256,
         Swamp = 512,
         BDSM_Room = 1024,
+        Oyku_Shinning = 2048,
+        Ending = 4096
     }
     
     public static class SceneExtensions

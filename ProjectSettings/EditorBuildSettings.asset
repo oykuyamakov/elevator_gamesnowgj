@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 39344dffe5db6e44da6b0983eb53f984
   - enabled: 1
-    path: Assets/Scenes/Oyku_Gossip.unity
+    path: Assets/Scenes/Oyku_Shinning.unity
     guid: 5c137dbca1e39fd40b555eba50dc3a32
   - enabled: 1
     path: Assets/Scenes/Sauna.unity
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Oyku_Rave.unity
     guid: e3ea489111d4eab408e71bfdb328bd36
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: e759207652ec7f54fb98c1d3becb50a8
   - enabled: 1
     path: Assets/Scenes/Swamp.unity
     guid: a586a4ca17fe3f341b2e9de0193022a0

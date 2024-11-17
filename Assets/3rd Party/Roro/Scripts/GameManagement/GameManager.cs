@@ -112,6 +112,11 @@ namespace Roro.Scripts.GameManagement
         
         public SceneId GetNewRandomScene()
         {
+            if(notDiscoveredScenes.Count<=0)
+            {
+                return SceneId.Ending;
+            }
+            
             var newScene = notDiscoveredScenes[Random.Range(0, notDiscoveredScenes.Count)];
             notDiscoveredScenes.Remove(newScene);
             return newScene;
