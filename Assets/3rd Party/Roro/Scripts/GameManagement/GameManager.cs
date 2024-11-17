@@ -103,11 +103,7 @@ namespace Roro.Scripts.GameManagement
 
         public void ResetNotDiscoveredScenes()
         {
-            notDiscoveredScenes = new List<SceneId>()
-            {
-                SceneId.Oyku_Rave,
-                SceneId.Oyku_Gossip,
-            };
+            notDiscoveredScenes = SceneLoader.Instance.ElevatorScenes;
         }
         
         public SceneId GetNewRandomScene()

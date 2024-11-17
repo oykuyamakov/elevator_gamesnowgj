@@ -34,11 +34,11 @@ namespace SceneManagement
             {SceneId.MainMenu, true},
             {SceneId.Tutorial, true},
             {SceneId.Oyku_Rave, true},
-            {SceneId.Oyku_Gossip, true},
             {SceneId.Sauna, true},
             {SceneId.Swamp, true},
             {SceneId.BDSM_Room, true},
             {SceneId.Oyku_Shinning, true},
+            {SceneId.Car, true},
             {SceneId.Ending, true},
         };
 
@@ -49,6 +49,8 @@ namespace SceneManagement
             SceneId.BDSM_Room,
             SceneId.Oyku_Rave,
             SceneId.Sauna,
+            SceneId.Car,
+            
         };
 
         private HashSet<SceneId> elevatorScenes => ScenesForElevator.ToHashSet();
@@ -169,8 +171,7 @@ namespace SceneManagement
             SceneManager.SetActiveScene(sceneId.GetScene());
             if(sceneControllers.Exists(x => x.SceneId == sceneId))
                 sceneControllers.Find(x => x.SceneId == sceneId).OnActiveScene();
-            
-            
+
 
             SendSceneChangedEvent(sceneId);
 
@@ -226,13 +227,14 @@ namespace SceneManagement
         Shared = 8,
         None = 16,
         Tutorial = 32,
+        
         Oyku_Rave = 64,
-        Oyku_Gossip = 128,
         Sauna = 256,
         Swamp = 512,
         BDSM_Room = 1024,
         Oyku_Shinning = 2048,
-        Ending = 4096
+        Ending = 4096,
+        Car = 8192,
     }
     
     public static class SceneExtensions

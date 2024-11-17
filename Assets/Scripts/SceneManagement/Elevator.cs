@@ -58,6 +58,11 @@ namespace SceneManagement
 
         private IEnumerator Aminakoyayim()
         {
+            var newScene = GameManager.Instance.GetNewRandomScene();
+
+            using var evt = ElevatorInEvent.Get(newScene);
+            evt.SendGlobal();
+            
             yield return new WaitForSeconds(0.5f);
             
             var volume = GameManager.Instance.GetPlayer().plCamera.GetComponent<Volume>();
@@ -71,7 +76,6 @@ namespace SceneManagement
             //
             yield return new WaitForSeconds(2f);
             
-            var newScene = GameManager.Instance.GetNewRandomScene();
             SceneLoader.Instance.ChangeScene(newScene);
             
             GameManager.Instance.GetPlayer().enabled = false;
