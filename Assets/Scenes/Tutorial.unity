@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -650,6 +650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Real_Elevator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475484705054390340, guid: 9278b4c47b453264d89ca0e6c82c20fa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
